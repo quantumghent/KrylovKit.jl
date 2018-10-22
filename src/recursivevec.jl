@@ -78,3 +78,5 @@ end
 
 LinAlg.vecdot(v::RecursiveVec{T}, w::RecursiveVec{T}) where {T} = sum(x->vecdot(x...), zip(v.vecs, w.vecs))
 LinAlg.vecnorm(v::RecursiveVec, p::Real = 2) = vecnorm(map(x->vecnorm(x,p), v.vecs), p)
+
+Base.zero(v::RecursiveVec) = RecursiveVec(zero.(v.vecs))
